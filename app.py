@@ -81,7 +81,7 @@ def register():
             education=form.education.data,
             experience_years=form.experience_years.data,
             profile_pic=profile_pic_filename,
-            date_joined=datetime.utcnow()
+            date_joined=datetime.now()
         )
 
         # Save to database
