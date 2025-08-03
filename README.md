@@ -16,41 +16,58 @@ and a responsive UI.
 
 ##  Tech Stack
 
-Frontend  --- HTML, CSS, Bootstrap5(responsive UI)
-
-Backend   --- Flask, Jinja2
-
-Database  --- SQLite(SQLAlchemy)
-
-Authentication ---  Flask-Login
-
-Deployment --- Render.com
-
-Extra features I add this project ----  flash messages, Edit profile, Edit post, Delete post
+-  Frontend  --- HTML, CSS, Bootstrap5(responsive UI)
+-  Backend   --- Flask, Jinja2
+-  Database  --- SQLite(SQLAlchemy)
+-  Authentication ---  Flask-Login
+-  Deployment --- Render.com
+-  Extra features I add this project ----  flash messages, Edit profile, Edit post, Delete post
 
 ##  Project Structure
 mini_linkedin/
+
 │
+
 ├── app.py                   # Main Flask app
+
 ├── models.py                # SQLAlchemy models
+
 ├── forms.py                 # WTForms for forms
+
 ├── templates/               # Jinja2 HTML files
+
 │ ├── base.html
+
 │ ├── home.html
+
 │ ├── register.html
+
 │ ├── login.html
+
 │ ├── profile.html
+
 │ ├── edit_profile.html
+
 │ ├── create_post.html
+
 │ ├── edit_post.html
+
 │ ├── landing.html
+
 │
+
 ├── static/
+
 │ ├── css/
+
 │ └── profile_pics/
+
 │
+
 ├── instance/linkedin_clone.db        # SQLite database
+
 ├── requirements.txt
+
 └── README.md
 
 ## Set Up Virtual Environment
