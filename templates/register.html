@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Home - MiniLinkedIn{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Create Your Account</h2>
+    <form action="{{ url_for('register') }}" method="post" enctype="multipart/form-data">
+    	{{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control", placeholder="Enter your full name") }}
+                {% for error in form.name.errors %}
+                    <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="Enter your email") }}
+                {% for error in form.email.errors %}
+                    <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Create a password") }}
+                {% for error in form.password.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.confirm_password.label(class="form-label") }}
+                {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
+                {% for error in form.confirm_password.errors %}
+                    <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h3>Profile-related</h3><br/>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.headline.label(class="form-label") }}
+                {{ form.headline(class="form-control", placeholder="e.g., Web Developer | AI Enthusiast") }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                {{ form.current_title.label(class="form-label") }}
+                {{ form.current_title(class="form-control", placeholder="e.g., Software Engineer") }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.company.label(class="form-label") }}
+                {{ form.company(class="form-control", placeholder="e.g., Google") }}
+            </div>
+            <!-- Location -->
+            <div class="col-md-6 mb-3">
+                {{ form.location.label(class="form-label") }}
+                {{ form.location(class="form-control", placeholder="e.g., Hyderabad, India") }}
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-3">
+            {{ form.skills.label(class="form-label") }}
+            {{ form.skills(class="form-control", placeholder="e.g., Python, Flask, SQL") }}
+        </div>
+
+        <!-- Education & Experience Years -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.education.label(class="form-label") }}
+                {{ form.education(class="form-control", placeholder="e.g., B.Tech in Computer Science") }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+            {{ form.experience_years.label(class="form-label") }}
+            {{ form.experience_years(class="form-control", placeholder="e.g., 2") }}
+            </div>
+        </div>
+        <!---Profile pic---->
+        <div class="mb-3">
+            {{ form.profile_pic.label(class="form-label") }}
+            {{ form.profile_pic(class="form-control") }}
+            {% for error in form.profile_pic.errors %}
+            <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-success btn-lg") }}
+        </div>
+        <p class="text-center mt-3">
+            Already have an account?
+            <a href="{{ url_for('login') }}" class="text-success">Log in here</a>
+        </p>
+    </form>
+</div>
+
+{% endblock %}

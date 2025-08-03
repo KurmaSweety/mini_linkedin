@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile - MiniLinkedIn{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 800px;">
+  <h2 class="mb-4 text-center">Edit Your Profile</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      {{ form.headline.label(class="form-label") }}
+      {{ form.headline(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.current_title.label(class="form-label") }}
+      {{ form.current_title(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.company.label(class="form-label") }}
+      {{ form.company(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.location.label(class="form-label") }}
+      {{ form.location(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.skills.label(class="form-label") }}
+      {{ form.skills(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.education.label(class="form-label") }}
+      {{ form.education(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.experience_years.label(class="form-label") }}
+      {{ form.experience_years(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+    {{ form.profile_pic.label(class="form-label") }}
+    {{ form.profile_pic(class="form-control") }}
+    <small class="form-text text-muted">Upload a JPG/PNG file</small>
+    </div>
+
+    {{ form.submit(class="btn btn-success") }}
+    <a href="{{ url_for('profile') }}" class="btn btn-secondary ms-2">Cancel</a>
+
+  </form>
+</div>
+{% endblock %}

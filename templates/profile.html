@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Profile - {{ current_user.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <!-- Profile Header -->
+  <div class="card shadow p-4 mb-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-3 text-center">
+        <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_pic) }}"
+           class="img-fluid rounded-circle border border-3"
+           width="150" height="150" alt="Profile Picture">
+      </div>
+
+      <div class="col-md-9">
+      <!-- Name and Headline -->
+      <h2>{{ current_user.name }}</h2>
+      <h5 class="text-muted">{{ current_user.headline }}</h5>
+
+      <!-- Current Role -->
+      {% if current_user.current_title and current_user.company %}
+        <p class="mb-1"><strong>{{ current_user.current_title }}</strong> at <strong>{{ current_user.company }}</strong></p>
+      {% endif %}
+
+      <!-- Location -->
+      {% if current_user.location %}
+        <p class="mb-1"><i class="bi bi-geo-alt-fill"></i> {{ current_user.location }}</p>
+      {% endif %}
+
+      <!-- Experience -->
+      {% if current_user.experience_years %}
+        <p class="mb-1">Experience: {{ current_user.experience_years }} year{{ 's' if current_user.experience_years > 1 else '' }}</p>
+      {% endif %}
+
+      <!-- Skills -->
+      {% if current_user.skills %}
+        <p class="mb-1"><strong>Skills:</strong> {{ current_user.skills }}</p>
+      {% endif %}
+
+      <!-- Education -->
+      {% if current_user.education %}
+        <p class="mb-1"><strong>Education:</strong> {{ current_user.education }}</p>
+      {% endif %}
+
+      <!-- Joined Date -->
+      <p class="text-muted mt-3">Joined on {{ current_user.date_joined.strftime('%B %d, %Y') }}</p>
+
+      <!-- Edit Profile Button -->
+      <a href="{{ url_for('edit_profile') }}" class="btn btn-outline-success mt-3">Edit Profile</a>
+    </div>
+  </div>
+</div>
+<!-- User's Posts -->
+<h3 class="mt-3">Your Posts</h3>
+{% for post in posts %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h6 class="text-muted">{{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</h6>
+      <p class="card-text">{{ post.content }}</p>
+
+      {% if current_user.id == post.author.id %}
+        <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+        <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

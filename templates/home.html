@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Home - MiniLinkedIn{% endblock %}
+
+{% block content %}
+<div class="mt-4">
+  <h3>Recent Posts</h3>
+
+  {% for post in posts %}
+  <div class="card mb-3">
+    <div class="card-header justify-content-between align-items-center">
+      <h5 class="card-title">{{ post.author.name }}</h5>
+      <h6 class="card-subtitle text-muted">{{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</h6>
+      <div class="card-body">
+        <p class="card-text">{{ post.content }}</p>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <p>No posts yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
