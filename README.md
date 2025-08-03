@@ -2,7 +2,7 @@
 
 MiniLinkedIn is a community platform built with Flask, SQLAlchemy, and Bootstrap that mimics 
 core features of LinkedIn — including user registration, login, profile creation/editing, posting updates,
-and a responsive UI with dark/light mode.
+and a responsive UI.
 
 ##  Features
 
