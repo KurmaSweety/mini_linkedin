@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory
+from flask import Flask, render_template, request, url_for, redirect, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, LoginManager, login_required, current_user, logout_user
 from models import db, User, Post
@@ -20,6 +20,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize DB
 db.init_app(app)
+
+with app.app_context():
+    db.create_all()
 
 #Login-flask
 login_manager = LoginManager()
@@ -223,6 +226,4 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=False)
